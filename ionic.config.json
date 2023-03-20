@@ -1,0 +1,7 @@
+{
+  "name": "One.IDCompanion",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
