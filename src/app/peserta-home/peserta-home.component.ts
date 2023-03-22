@@ -19,6 +19,7 @@ export class PesertaHomeComponent implements OnInit {
   koin10 = '';
   total_koin = 0;
 
+  historys = [];
 
   status = ''
 
@@ -34,9 +35,16 @@ export class PesertaHomeComponent implements OnInit {
     });
   }
 
+  getHistoryKelompok(id: number) {
+    this.ps.getHistoryKelompok(id).subscribe((data) => {
+      this.historys = data['data'];
+    })
+  }
+
   async ngOnInit() {
     this.id = await this.storage.get('user_id');
     this.getDataKelompok(this.id);
+    this.getHistoryKelompok(this.id);
   }
 
 }

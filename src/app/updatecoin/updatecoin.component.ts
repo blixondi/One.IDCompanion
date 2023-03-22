@@ -87,11 +87,18 @@ export class UpdatecoinComponent implements OnInit {
     });
   }
 
+  getHistoryById(id: number) {
+    this.ps.getHistoryKelompokById(id).subscribe((data) => {
+      this.historys = data['data'];
+    })
+  }
+
   async ngOnInit() {
     var kelompok_id: number = this.route.snapshot.params['id'];
     this.id = kelompok_id;
     this.user_status = await this.storage.get('user_status');
     this.getDataKelompokById(kelompok_id);
+    this.getHistoryById(kelompok_id);
   }
 
 }

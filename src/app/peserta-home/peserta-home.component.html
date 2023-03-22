@@ -1,20 +1,11 @@
 <ion-app>
   <ion-content class="ion-padding">
     <h2>Jumlah coin untuk kelompok: <br />{{ nama_kelompok }}</h2>
-    <img
-      src="../assets/img/koin1.png"
-      style="width: 12px"
-    />
+    <img src="../assets/img/koin1.png" style="width: 12px" />
     Jumlah Koin 1: {{ koin1 }} <br />
-    <img
-      src="../assets/img/koin5.png"
-      style="width: 12px"
-    />
+    <img src="../assets/img/koin5.png" style="width: 12px" />
     Jumlah Koin 5: {{ koin5 }} <br />
-    <img
-      src="../assets/img/koin10.png"
-      style="width: 12px"
-    />
+    <img src="../assets/img/koin10.png" style="width: 12px" />
     Jumlah Koin 10: {{ koin10 }} <br />
 
     <p>Total Koin: {{ total_koin }}</p>
@@ -29,12 +20,12 @@
         <ion-col class="col-header">Koin 10</ion-col>
         <ion-col class="col-header">Deskripsi</ion-col>
       </ion-row>
-      <ion-row>
-        <ion-col>22-03-2023</ion-col>
-        <ion-col>-5</ion-col>
-        <ion-col>10</ion-col>
-        <ion-col>0</ion-col>
-        <ion-col>Pembelian item X</ion-col>
+      <ion-row *ngFor="let history of historys">
+        <ion-col>{{ history["tanggal_transaksi"] }}</ion-col>
+        <ion-col>{{ history["transaksi_1"] }}</ion-col>
+        <ion-col>{{ history["transaksi_5"] }}</ion-col>
+        <ion-col>{{ history["transaksi_10"] }}</ion-col>
+        <ion-col>{{ history["detail"] }}</ion-col>
       </ion-row>
     </ion-grid>
   </ion-content>

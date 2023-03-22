@@ -22,6 +22,7 @@ export class PesertaService {
     )
   }
 
+  //get data kelompok untuk User
   getDataKelompok(id: number): Observable<any> {
     let body = new HttpParams();
     body = body.set('id', id);
@@ -31,6 +32,7 @@ export class PesertaService {
     )
   }
 
+  //get data kelompok untuk admin
   getDataKelompokById(id: number): Observable<any> {
     let body = new HttpParams();
     body = body.set('id', id);
@@ -38,6 +40,20 @@ export class PesertaService {
       'https://noinheim.my.id/onedotid_api/getkelompokbyid.php',
       body
     )
+  }
+
+  //get history kelompok untuk user
+  getHistoryKelompok(id: number): Observable<any> {
+    let body = new HttpParams();
+    body = body.set('id', id);
+    return this.http.post('https://noinheim.my.id/onedotid_api/gethistorykelompok.php', body)
+  }
+
+  //get history kelompok untuk admin
+  getHistoryKelompokById(id: number): Observable<any> {
+    let body = new HttpParams();
+    body = body.set('id', id);
+    return this.http.post('https://noinheim.my.id/onedotid_api/gethistorykelompokbyid.php', body)
   }
 
   updateCoin(koin1: number, koin5: number, koin10: number, id: number): Observable<any> {
