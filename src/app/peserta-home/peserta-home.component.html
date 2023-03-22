@@ -1,3 +1,41 @@
-<p>
-  peserta-home works!
-</p>
+<ion-app>
+  <ion-content class="ion-padding">
+    <h2>Jumlah coin untuk kelompok {{ nama_kelompok }}</h2>
+    <img
+      src="https://static.wikia.nocookie.net/terraria_gamepedia/images/4/43/Copper_Coin.png"
+      style="width: 12px"
+    />
+    Jumlah Koin 1: {{ koin1 }} <br />
+    <img
+      src="https://static.wikia.nocookie.net/terraria_gamepedia/images/4/4e/Silver_Coin.png/"
+      style="width: 12px"
+    />
+    Jumlah Koin 5: {{ koin5 }} <br />
+    <img
+      src="https://static.wikia.nocookie.net/terraria_gamepedia/images/1/1f/Gold_Coin.png/"
+      style="width: 12px"
+    />
+    Jumlah Koin 10: {{ koin10 }} <br />
+
+    <p>Total Koin: {{ total_koin }}</p>
+    <ion-item>
+      <h1>History Transaksi</h1>
+    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="col-header">Tanggal Transaksi</ion-col>
+        <ion-col class="col-header">Koin 1</ion-col>
+        <ion-col class="col-header">Koin 5</ion-col>
+        <ion-col class="col-header">Koin 10</ion-col>
+        <ion-col class="col-header">Deskripsi</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>22-03-2023</ion-col>
+        <ion-col>-5</ion-col>
+        <ion-col>10</ion-col>
+        <ion-col>0</ion-col>
+        <ion-col>Pembelian item X</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+</ion-app>
