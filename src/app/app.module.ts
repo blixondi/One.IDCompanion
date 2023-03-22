@@ -29,7 +29,7 @@ const appRoutes: Routes = [
   { path: 'adminHome', component: AdminHomeComponent },
   { path: 'rundown', component: RundownComponent },
   { path: 'katalog', component: KatalogComponent },
-  { path: 'updateCoin', component: UpdatecoinComponent }
+  { path: 'updateCoin/:id', component: UpdatecoinComponent }
 ];
 
 @NgModule({

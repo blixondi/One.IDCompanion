@@ -33,5 +33,6 @@ export class PesertaService {
   getAllKelompok(): Observable<any> {
     return this.http.get('https://noinheim.my.id/onedotid_api/getkelompok.php')
   }
+  
   constructor(private http: HttpClient) { }
 }

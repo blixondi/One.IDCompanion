@@ -1,3 +1,14 @@
-<p>
-  admin-home works!
-</p>
+<ion-app>
+  <ion-grid style="margin-top: 5px">
+    <ion-row>
+      <ion-col class="col-header">Nama Kelompok</ion-col>
+      <ion-col class="col-header">Total Koin</ion-col>
+      <ion-col class="col-header">Ubah Data</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let kelompok of kelompoks">
+      <ion-col>{{ kelompok.nama }}</ion-col>
+      <ion-col>{{ kelompok.total_koin }}</ion-col>
+      <ion-col routerLink="/updateCoin/{{ kelompok.id }}">Ubah</ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-app>
