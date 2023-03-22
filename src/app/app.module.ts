@@ -22,7 +22,7 @@ import { KatalogComponent } from './katalog/katalog.component';
 
 
 const appRoutes: Routes = [
-
+  
 ];
 
 @NgModule({
