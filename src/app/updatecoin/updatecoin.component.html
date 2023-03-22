@@ -1,20 +1,12 @@
 <ion-app>
   <ion-content class="ion-padding">
     <h2>Jumlah coin untuk kelompok: <br />{{ nama_kelompok }}</h2>
-    <img
-      src="https://static.wikia.nocookie.net/terraria_gamepedia/images/4/43/Copper_Coin.png"
-      style="width: 12px"
-    />
+
+    <img src="../assets/img/koin1.png" style="width: 12px" />
     Jumlah Koin 1: {{ koin1_old }} <br />
-    <img
-      src="https://static.wikia.nocookie.net/terraria_gamepedia/images/4/4e/Silver_Coin.png/"
-      style="width: 12px"
-    />
+    <img src="../assets/img/koin5.png" style="width: 12px" />
     Jumlah Koin 5: {{ koin5_old }} <br />
-    <img
-      src="https://static.wikia.nocookie.net/terraria_gamepedia/images/1/1f/Gold_Coin.png/"
-      style="width: 12px"
-    />
+    <img src="../assets/img/koin10.png" style="width: 12px" />
     Jumlah Koin 10: {{ koin10_old }} <br />
 
     <p>Total Koin: {{ total_koin_old }}</p>
@@ -62,10 +54,11 @@
         [autoGrow]="true"
         placeholder="Masukkan alasan"
         maxlength="500"
+        [(ngModel)]="reason"
       ></ion-textarea>
     </ion-item>
 
-    <ion-button (click)="updateCoin()">Simpan</ion-button>
+    <ion-button (click)="insertHistory()">Simpan</ion-button>
 
     <ion-item>
       <h1>History Transaksi</h1>

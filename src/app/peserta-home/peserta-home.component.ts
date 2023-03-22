@@ -19,6 +19,7 @@ export class PesertaHomeComponent implements OnInit {
   koin10 = '';
   total_koin = 0;
 
+
   status = ''
 
   getDataKelompok(id: number) {

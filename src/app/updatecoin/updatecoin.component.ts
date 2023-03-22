@@ -14,7 +14,6 @@ export class UpdatecoinComponent implements OnInit {
 
   constructor(private storage: Storage, public ps: PesertaService, public route: ActivatedRoute) { }
 
-
   user_status = '';
   nama_kelompok = '';
   koin1_old = 0;
@@ -27,6 +26,12 @@ export class UpdatecoinComponent implements OnInit {
   koin5_new = 0;
   koin10_new = 0;
   reason = "";
+
+  diff_koin1 = 0;
+  diff_koin5 = 0;
+  diff_koin10 = 0;
+
+  historys = [];
 
   addKoin1() {
     this.koin1_new += 1;
@@ -50,6 +55,18 @@ export class UpdatecoinComponent implements OnInit {
 
   remKoin10() {
     this.koin10_new -= 1;
+  }
+
+  insertHistory() {
+    this.diff_koin1 = this.koin1_new - this.koin1_old;
+    this.diff_koin5 = this.koin5_new - this.koin5_old;
+    this.diff_koin10 = this.koin10_new - this.koin10_old;
+    this.ps.insertHistory(this.id, this.diff_koin1, this.diff_koin5, this.diff_koin10, this.reason).subscribe((data) => {
+      if (data['result'] == "success") {
+        this.reason = "";
+        this.updateCoin();
+      }
+    })
   }
 
   updateCoin() {
