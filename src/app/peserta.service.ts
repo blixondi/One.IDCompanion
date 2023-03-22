@@ -19,12 +19,14 @@ export class PesertaService {
     )
   }
 
-  getFavoriteComic(user_id: number): Observable<any> {
+  updateCoin(koin1: number, koin5: number, koin10: number, id: number): Observable<any> {
     let body = new HttpParams();
-    body = body.set('id', user_id);
+    body = body.set('koin1', koin1);
+    body = body.set('koin5', koin5);
+    body = body.set('koin10', koin10);
+    body = body.set('id', id);
     return this.http.post(
-      'https://ubaya.fun/hybrid/160420033/komik_api/getuserfavcomic.php',
-      body
+      'https://noinheim.my.id/onedotid_api/updatecoin.php', body
     )
   }
 
