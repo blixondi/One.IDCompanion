@@ -19,15 +19,21 @@ import { PesertaService } from './peserta.service';
 //import component baru
 import { UpdatecoinComponent } from './updatecoin/updatecoin.component';
 import { KatalogComponent } from './katalog/katalog.component';
+import { RundownComponent } from './rundown/rundown.component';
 import { PesertaHomeComponent } from './peserta-home/peserta-home.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
 
 
 const appRoutes: Routes = [
-  { path: 'pesertaHome', component: PesertaHomeComponent }
+  { path: 'pesertaHome', component: PesertaHomeComponent },
+  { path: 'adminHome', component: AdminHomeComponent },
+  { path: 'rundown', component: RundownComponent },
+  { path: 'katalog', component: KatalogComponent },
+  { path: 'updateCoin', component: UpdatecoinComponent }
 ];
 
 @NgModule({
-  declarations: [AppComponent, UpdatecoinComponent, KatalogComponent, PesertaHomeComponent],
+  declarations: [AppComponent, UpdatecoinComponent, KatalogComponent, PesertaHomeComponent, AdminHomeComponent, RundownComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, HttpClientModule, IonicStorageModule.forRoot(), RouterModule.forRoot(appRoutes), RouterModule.forChild(appRoutes)],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, LoginService, PesertaService],
   bootstrap: [AppComponent],

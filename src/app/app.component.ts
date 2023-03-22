@@ -51,6 +51,8 @@ export class AppComponent {
         this.login_user = '';
         if (this.user_status == 'peserta') {
           this.r.navigate(['/pesertaHome']);
+        } else {
+          this.r.navigate(['/adminHome']);
         }
         this.rightToast(this.username);
       } else {
