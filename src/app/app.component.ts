@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 import { LoginService } from './login.service';
 import { ToastController } from '@ionic/angular';
+import { Route, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
@@ -9,7 +11,7 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private storage: Storage, public ls: LoginService, public tc: ToastController) { }
+  constructor(private storage: Storage, public ls: LoginService, public tc: ToastController, public r: Router) { }
   user_id = '';
   username = '';
   user_status = '';
@@ -47,6 +49,9 @@ export class AppComponent {
         this.storage.set('user_status', this.user_status);
         this.login_pw = '';
         this.login_user = '';
+        if (this.user_status == 'peserta') {
+          this.r.navigate(['/pesertaHome']);
+        }
         this.rightToast(this.username);
       } else {
         this.wrongToast();

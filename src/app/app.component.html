@@ -32,7 +32,7 @@
   </ion-content>
 </ion-app>
 
-<ion-app *ngIf="user_status == 'admin'">
+<ion-app *ngIf="user_status == 'admin' && user_id">
   <ion-menu content-id="content">
     <ion-header>
       <ion-toolbar>
@@ -79,7 +79,7 @@
   </ion-content>
 </ion-app>
 
-<ion-app *ngIf="user_status == 'peserta'">
+<ion-app *ngIf="user_status == 'peserta' && user_id">
   <ion-menu content-id="content">
     <ion-header>
       <ion-toolbar>
