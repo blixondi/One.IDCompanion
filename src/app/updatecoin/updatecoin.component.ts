@@ -73,6 +73,7 @@ export class UpdatecoinComponent implements OnInit {
     this.ps.updateCoin(this.koin1_new, this.koin5_new, this.koin10_new, this.id).subscribe((data) => {
       if (data['result'] == "success") {
         this.getDataKelompokById(this.id);
+        this.getHistoryById(this.id);
       }
     })
   }

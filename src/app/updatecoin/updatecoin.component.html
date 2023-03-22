@@ -71,12 +71,12 @@
         <ion-col class="col-header">Koin 10</ion-col>
         <ion-col class="col-header">Deskripsi</ion-col>
       </ion-row>
-      <ion-row>
-        <ion-col>22-03-2023</ion-col>
-        <ion-col>-5</ion-col>
-        <ion-col>10</ion-col>
-        <ion-col>0</ion-col>
-        <ion-col>Pembelian item X</ion-col>
+      <ion-row *ngFor="let history of historys">
+        <ion-col>{{ history["tanggal_transaksi"] }}</ion-col>
+        <ion-col>{{ history["transaksi_1"] }}</ion-col>
+        <ion-col>{{ history["transaksi_5"] }}</ion-col>
+        <ion-col>{{ history["transaksi_10"] }}</ion-col>
+        <ion-col>{{ history["detail"] }}</ion-col>
       </ion-row>
     </ion-grid>
   </ion-content>
