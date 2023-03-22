@@ -14,6 +14,15 @@ export class PesertaService {
     let body = new HttpParams();
     body = body.set('id', id);
     return this.http.post(
+      'https://noinheim.my.id/onedotid_api/getkelompokbyuserid.php',
+      body
+    )
+  }
+
+  getDataKelompokById(id: number): Observable<any> {
+    let body = new HttpParams();
+    body = body.set('id', id);
+    return this.http.post(
       'https://noinheim.my.id/onedotid_api/getkelompokbyid.php',
       body
     )
@@ -33,6 +42,6 @@ export class PesertaService {
   getAllKelompok(): Observable<any> {
     return this.http.get('https://noinheim.my.id/onedotid_api/getkelompok.php')
   }
-  
+
   constructor(private http: HttpClient) { }
 }

@@ -1,3 +1,92 @@
-<p *ngIf="user_status == 'admin'">updatecoin works!</p>
+<ion-app>
+  <ion-content class="ion-padding">
+    <h2>Jumlah coin untuk kelompok: <br />{{ nama_kelompok }}</h2>
+    <img
+      src="https://static.wikia.nocookie.net/terraria_gamepedia/images/4/43/Copper_Coin.png"
+      style="width: 12px"
+    />
+    Jumlah Koin 1: {{ koin1_old }} <br />
+    <img
+      src="https://static.wikia.nocookie.net/terraria_gamepedia/images/4/4e/Silver_Coin.png/"
+      style="width: 12px"
+    />
+    Jumlah Koin 5: {{ koin5_old }} <br />
+    <img
+      src="https://static.wikia.nocookie.net/terraria_gamepedia/images/1/1f/Gold_Coin.png/"
+      style="width: 12px"
+    />
+    Jumlah Koin 10: {{ koin10_old }} <br />
+
+    <p>Total Koin: {{ total_koin_old }}</p>
+    <ion-item>
+      <h1>Tambah/Kurangi Koin</h1>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Koin 1</ion-label>
+      <ion-input
+        type="number"
+        value="{{ koin1_old }}"
+        [(ngModel)]="koin1_new"
+      ></ion-input>
+      <ion-button (click)="addKoin1()">+</ion-button>
+      <ion-button (click)="remKoin1()">-</ion-button>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Koin 5</ion-label>
+      <ion-input
+        type="number"
+        value="{{ koin5_old }}"
+        [(ngModel)]="koin5_new"
+      ></ion-input>
+      <ion-button (click)="addKoin5()">+</ion-button>
+      <ion-button (click)="remKoin5()">-</ion-button>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Koin 10</ion-label>
+      <ion-input
+        type="number"
+        value="{{ koin10_old }}"
+        [(ngModel)]="koin10_new"
+      ></ion-input>
+      <ion-button (click)="addKoin10()">+</ion-button>
+      <ion-button (click)="remKoin10()">-</ion-button>
+    </ion-item>
+
+    <ion-item counter="true">
+      <ion-label>Alasan perubahan</ion-label>
+      <ion-textarea
+        placeholder="Type something here"
+        [autoGrow]="true"
+        placeholder="Masukkan alasan"
+        maxlength="500"
+      ></ion-textarea>
+    </ion-item>
+
+    <ion-button (click)="updateCoin()">Simpan</ion-button>
+
+    <ion-item>
+      <h1>History Transaksi</h1>
+    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="col-header">Tanggal Transaksi</ion-col>
+        <ion-col class="col-header">Koin 1</ion-col>
+        <ion-col class="col-header">Koin 5</ion-col>
+        <ion-col class="col-header">Koin 10</ion-col>
+        <ion-col class="col-header">Deskripsi</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>22-03-2023</ion-col>
+        <ion-col>-5</ion-col>
+        <ion-col>10</ion-col>
+        <ion-col>0</ion-col>
+        <ion-col>Pembelian item X</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+</ion-app>
 
 <h1 *ngIf="user_status == 'peserta'">Hayo ngapain 🤭</h1>
