@@ -1,0 +1,91 @@
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // justify-content: center;
+}
+
+.space-betweend {
+  justify-content: space-between;
+}
+
+.point-card {
+  height: 120px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: inset;
+  margin: 0;
+}
+
+.card-header {
+  position: relative;
+  display: block;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(251, 220, 153, 0.291) 100%);
+  border-radius: 0 0 20px 20px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+.card {
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(251, 220, 153, 0.291) 100%);
+  margin: 10px;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  margin: 0;
+}
+
+.card-title {
+  color: rgb(58, 0, 25);
+  margin-top: 5px;
+  font-weight: 500;
+}
+.card-subtitle {
+  font-size: 15px;
+  padding: 0;
+  margin-bottom: 0;
+  color: rgb(58, 0, 25);
+}
+
+.transaction-list-items {
+  padding: 0;
+  margin: none;
+  background: white;
+  margin-bottom: 10px;
+}
+
+.list-item-time {
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: dimgrey;
+}
+
+
+.list-item-alasan {
+  font-size: 14px;
+  color: rgb(0, 0, 0);
+}
+
+.list-item-detail {
+  font-size: 14px;
+  color: dimgrey;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-evenly;
+  margin: none;
+}
+
+.list-item-detail p {
+  margin: 0;
+  font-size: 14px;
+}
+.list-item-detail div {
+  width: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
