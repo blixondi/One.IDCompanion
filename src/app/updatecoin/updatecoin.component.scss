@@ -1,3 +1,4 @@
+
 .center-content {
   display: flex;
   flex-direction: column;
@@ -32,7 +33,7 @@
   background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(251, 220, 153, 0.291) 100%);
   margin: 10px;
   border-radius: 15px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  box-shadow: rgba(0, 0, 0, 0.318) 0px 4px 12px;
   margin: 0;
 }
 
@@ -88,4 +89,9 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+ion-item ion-button {
+  width: 25px;
+  height: 25px;
 }

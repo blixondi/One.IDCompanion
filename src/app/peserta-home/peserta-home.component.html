@@ -1,32 +1,72 @@
 <ion-app>
-  <ion-content class="ion-padding">
-    <h2>Jumlah coin untuk kelompok: <br />{{ nama_kelompok }}</h2>
-    <img src="../assets/img/koin1.png" style="width: 12px" />
-    Jumlah Koin 1: {{ koin1 }} <br />
-    <img src="../assets/img/koin5.png" style="width: 12px" />
-    Jumlah Koin 5: {{ koin5 }} <br />
-    <img src="../assets/img/koin10.png" style="width: 12px" />
-    Jumlah Koin 10: {{ koin10 }} <br />
+  <ion-content class="">
+    <div class="card-header ion-padding ">
+      <p class="card-subtitle">Selamat datang!</p>
+      <h1 class="card-title">{{ nama_kelompok }}</h1>
 
-    <p>Total Koin: {{ total_koin }}</p>
-    <ion-item>
-      <h1>History Transaksi</h1>
-    </ion-item>
-    <ion-grid>
-      <ion-row>
-        <ion-col class="col-header">Tanggal Transaksi</ion-col>
-        <ion-col class="col-header">Koin 1</ion-col>
-        <ion-col class="col-header">Koin 5</ion-col>
-        <ion-col class="col-header">Koin 10</ion-col>
-        <ion-col class="col-header">Deskripsi</ion-col>
+      <p>Total Koin: <span style="font-weight:750;">{{ total_koin }}</span></p>
+      <ion-grid [fixed]="true">
+      <ion-row class="">
+        <ion-col size="" class="">
+          <ion-card class="center-content point-card space-betweend">
+            <img src="../assets/img/koin1.png" style="width: 30%;" />
+            <h3> {{ koin1 }}</h3>
+          </ion-card>
+        </ion-col>
+
+        <ion-col size="" class="">
+          <ion-card class="center-content point-card space-betweend">
+            <img src="../assets/img/koin5.png" style="width: 30%;" />
+            <h3> {{ koin5 }}</h3>
+          </ion-card>
+        </ion-col>
+
+        <ion-col size="" class="">
+          <ion-card class="center-content point-card space-betweend">
+            <img src="../assets/img/koin10.png" style="width: 30%;" />
+            <h3> {{ koin10 }}</h3>
+          </ion-card>
+        </ion-col>
       </ion-row>
-      <ion-row *ngFor="let history of historys">
-        <ion-col>{{ history["tanggal_transaksi"] }}</ion-col>
-        <ion-col>{{ history["transaksi_1"] }}</ion-col>
-        <ion-col>{{ history["transaksi_5"] }}</ion-col>
-        <ion-col>{{ history["transaksi_10"] }}</ion-col>
-        <ion-col>{{ history["detail"] }}</ion-col>
-      </ion-row>
-    </ion-grid>
+      </ion-grid>
+    </div>
+
+    <div class="card ion-padding">
+      <div style="text-align:center">
+        <h1>Daftar Transaksi</h1>
+      </div>
+
+
+      <div class="transaction-list-items" *ngFor="let history of historys">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <p class="list-item-time">{{ history["tanggal_transaksi"] }}</p>
+              <p class="list-item-alasan">{{ history["detail"] }}</p>
+            </ion-col >
+            <ion-col style="display: flex;" class="list-item-detail">
+              <div>
+                <p>
+                  <img src="../assets/img/koin1.png"/>
+                </p>
+                <p [ngStyle]="{'color':history['transaksi_1'] < 0 ? 'red' : 'green' }">{{ history["transaksi_1"] }}</p>
+              </div>
+              <div>
+                <p>
+                  <img src="../assets/img/koin5.png"/>
+                </p>
+                <p [ngStyle]="{'color':history['transaksi_5'] < 0 ? 'red' : 'green' }">{{ history["transaksi_5"] }}</p>
+              </div>
+              <div>
+                <p>
+                  <img src="../assets/img/koin10.png" />
+                </p>
+                <p [ngStyle]="{'color':history['transaksi_10'] < 0 ? 'red' : 'green' }">{{ history["transaksi_10"] }}</p>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
   </ion-content>
 </ion-app>
