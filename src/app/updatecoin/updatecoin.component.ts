@@ -105,7 +105,7 @@ export class UpdatecoinComponent implements OnInit {
   async updateToast() {
     const toast = await this.tc.create({
       message: 'Update coin berhasil',
-      duration: 1500,
+      duration: 1000,
       position: 'middle'
     });
 

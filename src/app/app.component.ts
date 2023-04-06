@@ -21,8 +21,8 @@ export class AppComponent {
   async wrongToast() {
     const toast = await this.tc.create({
       message: 'Wrong username/password',
-      duration: 1500,
-      position: 'middle'
+      duration: 1000,
+      position: 'top'
     });
 
     await toast.present();
@@ -32,8 +32,8 @@ export class AppComponent {
   async rightToast(username: string) {
     const toast = await this.tc.create({
       message: 'Hello ' + username + ', welcome to One.ID Companion APP',
-      duration: 1500,
-      position: 'middle'
+      duration: 1000,
+      position: 'top'
     });
     await toast.present();
   }
