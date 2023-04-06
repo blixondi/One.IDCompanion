@@ -22,7 +22,7 @@ export class AppComponent {
     const toast = await this.tc.create({
       message: 'Wrong username/password',
       duration: 1500,
-      position: 'top'
+      position: 'middle'
     });
 
     await toast.present();
@@ -33,7 +33,7 @@ export class AppComponent {
     const toast = await this.tc.create({
       message: 'Hello ' + username + ', welcome to One.ID Companion APP',
       duration: 1500,
-      position: 'top'
+      position: 'middle'
     });
     await toast.present();
   }
