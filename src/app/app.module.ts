@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy, Routes, RouterModule } from '@angular/router';
 
@@ -22,6 +22,7 @@ import { KatalogComponent } from './katalog/katalog.component';
 import { RundownComponent } from './rundown/rundown.component';
 import { PesertaHomeComponent } from './peserta-home/peserta-home.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 const appRoutes: Routes = [
@@ -34,7 +35,12 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [AppComponent, UpdatecoinComponent, KatalogComponent, PesertaHomeComponent, AdminHomeComponent, RundownComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, HttpClientModule, IonicStorageModule.forRoot(), RouterModule.forRoot(appRoutes), RouterModule.forChild(appRoutes)],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, HttpClientModule, IonicStorageModule.forRoot(), RouterModule.forRoot(appRoutes), RouterModule.forChild(appRoutes), ServiceWorkerModule.register('ngsw-worker.js', {
+  enabled: !isDevMode(),
+  // Register the ServiceWorker as soon as the application is stable
+  // or after 30 seconds (whichever comes first).
+  registrationStrategy: 'registerWhenStable:30000'
+})],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, LoginService, PesertaService],
   bootstrap: [AppComponent],
 })
