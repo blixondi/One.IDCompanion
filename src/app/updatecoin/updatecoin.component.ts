@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 import { PesertaService } from '../peserta.service';
 import { ActivatedRoute } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 
 
 
@@ -12,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UpdatecoinComponent implements OnInit {
 
-  constructor(private storage: Storage, public ps: PesertaService, public route: ActivatedRoute) { }
+  constructor(private storage: Storage, public ps: PesertaService, public route: ActivatedRoute, public tc: ToastController) { }
 
   user_status = '';
   nama_kelompok = '';
@@ -71,6 +72,7 @@ export class UpdatecoinComponent implements OnInit {
       if (data['result'] == "success") {
         this.reason = "";
         this.updateCoin();
+        this.updateToast();
       }
     })
   }
@@ -98,6 +100,17 @@ export class UpdatecoinComponent implements OnInit {
     this.ps.getHistoryKelompokById(id).subscribe((data) => {
       this.historys = data['data'];
     })
+  }
+
+  async updateToast() {
+    const toast = await this.tc.create({
+      message: 'Update coin berhasil',
+      duration: 1500,
+      position: 'middle'
+    });
+
+    await toast.present();
+
   }
 
   async ngOnInit() {
