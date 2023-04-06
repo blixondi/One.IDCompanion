@@ -35,6 +35,7 @@ export class UpdatecoinComponent implements OnInit {
   historys = [];
 
   addKoin1() {
+    //this.koin1_new = this.koin1_old
     this.koin1_new += 1;
     this.diff_koin1 = this.koin1_new - this.koin1_old;
   }
@@ -72,9 +73,10 @@ export class UpdatecoinComponent implements OnInit {
       if (data['result'] == "success") {
         this.reason = "";
         this.updateCoin();
-        this.updateToast();
       }
     })
+
+
   }
 
   updateCoin() {
@@ -82,8 +84,10 @@ export class UpdatecoinComponent implements OnInit {
       if (data['result'] == "success") {
         this.getDataKelompokById(this.id);
         this.getHistoryById(this.id);
+        this.updateToast();
       }
     })
+
   }
 
   getDataKelompokById(id: number) {
@@ -92,6 +96,9 @@ export class UpdatecoinComponent implements OnInit {
       this.koin1_old = data['data']['0']['koin1'];
       this.koin5_old = data['data']['0']['koin5'];
       this.koin10_old = data['data']['0']['koin10'];
+      this.koin1_new = data['data']['0']['koin1'];
+      this.koin5_new = data['data']['0']['koin5'];
+      this.koin10_new = data['data']['0']['koin10'];
       this.total_koin_old = data['data']['0']['total_koin'];
     });
   }
@@ -101,6 +108,23 @@ export class UpdatecoinComponent implements OnInit {
       this.historys = data['data'];
     })
   }
+
+  handlerMessage = '';
+
+  public alertButtons = [
+    {
+      text: 'Tidak',
+      role: 'cancel',
+      handler: () => { }
+    },
+    {
+      text: 'Ya',
+      role: 'confirm',
+      handler: () => { this.insertHistory(); }
+    }
+  ];
+
+
 
   async updateToast() {
     const toast = await this.tc.create({
