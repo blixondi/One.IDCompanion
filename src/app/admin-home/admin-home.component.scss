@@ -1,6 +1,15 @@
 .col-header{
-    background-color: #af432a;
-    border: solid 1px rgb(0, 0, 0);
-    color: #fff;
+    background-color: #e6e6e6;
+    // border: solid 1px rgb(0, 0, 0);
+    color: #454545;
+    align-items: center;
+    font-weight: 500;
+    justify-content: center;
+    padding: 10px;
+    display: flex;
     text-align: center;
+}
+
+.table-row {
+  padding: 5px;
 }

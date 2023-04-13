@@ -10,12 +10,10 @@ import { HttpParams } from '@angular/common/http';
 })
 export class PesertaService {
 
-  insertHistory(id: number, koin1: number, koin5: number, koin10: number, detail: string): Observable<any> {
+  insertHistory(id: number, jumlah_transaksi: number, detail: string): Observable<any> {
     let body = new HttpParams();
     body = body.set('id', id);
-    body = body.set('koin1', koin1);
-    body = body.set('koin5', koin5);
-    body = body.set('koin10', koin10);
+    body = body.set('jumlah_transaksi', jumlah_transaksi);
     body = body.set('detail', detail);
     return this.http.post(
       'https://noinheim.my.id/onedotid_api/inserthistory.php', body
@@ -56,11 +54,10 @@ export class PesertaService {
     return this.http.post('https://noinheim.my.id/onedotid_api/gethistorykelompokbyid.php', body)
   }
 
-  updateCoin(koin1: number, koin5: number, koin10: number, id: number): Observable<any> {
+  updateCoin(perolehan_koin: number, koin: number, id: number): Observable<any> {
     let body = new HttpParams();
-    body = body.set('koin1', koin1);
-    body = body.set('koin5', koin5);
-    body = body.set('koin10', koin10);
+    body = body.set('perolehan_koin', perolehan_koin);
+    body = body.set('koin', koin);
     body = body.set('id', id);
     return this.http.post(
       'https://noinheim.my.id/onedotid_api/updatecoin.php', body

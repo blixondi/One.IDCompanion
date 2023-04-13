@@ -1,85 +1,116 @@
 <ion-app *ngIf="user_status == 'admin'">
-  <ion-content class="ion-padding">
-    <h2>Jumlah coin untuk kelompok: <br />{{ nama_kelompok }}</h2>
+  <ion-content class="">
+    <div class="card-header ion-padding">
+      <p class="card-subtitle">Detail Poin Kelompok</p>
+      <h1 class="card-title">{{ nama_kelompok }}</h1>
 
-    <img src="../assets/img/koin1.png" style="width: 12px" />
-    Jumlah Koin 1: {{ koin1_old }} <br />
-    <img src="../assets/img/koin5.png" style="width: 12px" />
-    Jumlah Koin 5: {{ koin5_old }} <br />
-    <img src="../assets/img/koin10.png" style="width: 12px" />
-    Jumlah Koin 10: {{ koin10_old }} <br />
+      <p>
+        Total Koin: <span style="font-weight: 750">{{ koin_old }}</span>
+      </p>
+      <p>
+        Total Perolehan Koin:
+        <span style="font-weight: 750">{{ perolehan_koin_old }}</span>
+      </p>
+      <ion-grid [fixed]="true">
+        <ion-row class="">
+          <!-- <ion-col size="" class="">
+            <ion-card class="center-content point-card space-betweend">
+              <img src="../assets/img/koin1.png" style="width: 30%" />
+              <h3>{{ koin1_old }}</h3>
+            </ion-card>
+          </ion-col>
 
-    <p>Total Koin: {{ total_koin_old }}</p>
-    <ion-item>
-      <h1>Tambah/Kurangi Koin</h1>
-    </ion-item>
+          <ion-col size="" class="">
+            <ion-card class="center-content point-card space-betweend">
+              <img src="../assets/img/koin5.png" style="width: 30%" />
+              <h3>{{ koin5_old }}</h3>
+            </ion-card>
+          </ion-col> -->
 
-    <ion-item>
-      <ion-label>Koin 1</ion-label>
-      <ion-input
-        type="number"
-        value="{{ koin1_old }}"
-        [(ngModel)]="koin1_new"
-      ></ion-input>
-      <ion-button (click)="addKoin1()">+</ion-button>
-      <ion-button (click)="remKoin1()">-</ion-button>
-    </ion-item>
+          <ion-col size="" class="">
+            <ion-card class="">
+              <img src="../assets/img/koin10.png" style="width: 30%" />
+              <h3>{{ koin_old }}</h3>
+            </ion-card>
+          </ion-col>
+        </ion-row>
 
-    <ion-item>
-      <ion-label>Koin 5</ion-label>
-      <ion-input
-        type="number"
-        value="{{ koin5_old }}"
-        [(ngModel)]="koin5_new"
-      ></ion-input>
-      <ion-button (click)="addKoin5()">+</ion-button>
-      <ion-button (click)="remKoin5()">-</ion-button>
-    </ion-item>
+      </ion-grid>
+    </div>
 
-    <ion-item>
-      <ion-label>Koin 10</ion-label>
-      <ion-input
-        type="number"
-        value="{{ koin10_old }}"
-        [(ngModel)]="koin10_new"
-      ></ion-input>
-      <ion-button (click)="addKoin10()">+</ion-button>
-      <ion-button (click)="remKoin10()">-</ion-button>
-    </ion-item>
+    <div class="ion-padding" style="margin-bottom: 20px">
+      <div style="text-align: center">
+        <h1>Tambah/Kurangi Koin</h1>
+      </div>
 
-    <ion-item counter="true">
-      <ion-label>Alasan perubahan</ion-label>
-      <ion-textarea
-        placeholder="Type something here"
-        [autoGrow]="true"
-        placeholder="Masukkan alasan"
-        maxlength="500"
-        [(ngModel)]="reason"
-      ></ion-textarea>
-    </ion-item>
+      <ion-item>
+        <ion-label position="stacked"
+          >Koin
+          <span
+            style="font-weight: 750"
+            [ngStyle]="{ color: diff_koin < 0 ? 'red' : 'green' }"
+            >{{ diff_koin ? "(" + diff_koin + ")" : "" }}
+          </span>
+        </ion-label>
+        <ion-input
+          type="number"
+          value="{{ koin_old }}"
+          [(ngModel)]="koin_new"
+        ></ion-input>
+        <div slot="end">
+          <ion-button (click)="addKoin()">+</ion-button>
+          <ion-button color="danger" (click)="remKoin()">-</ion-button>
+        </div>
+      </ion-item>
 
-    <ion-button (click)="insertHistory()">Simpan</ion-button>
 
-    <ion-item>
-      <h1>History Transaksi</h1>
-    </ion-item>
-    <ion-grid>
-      <ion-row>
-        <ion-col class="col-header">Tanggal Transaksi</ion-col>
-        <ion-col class="col-header">Koin 1</ion-col>
-        <ion-col class="col-header">Koin 5</ion-col>
-        <ion-col class="col-header">Koin 10</ion-col>
-        <ion-col class="col-header">Deskripsi</ion-col>
-      </ion-row>
-      <ion-row *ngFor="let history of historys">
-        <ion-col>{{ history["tanggal_transaksi"] }}</ion-col>
-        <ion-col>{{ history["transaksi_1"] }}</ion-col>
-        <ion-col>{{ history["transaksi_5"] }}</ion-col>
-        <ion-col>{{ history["transaksi_10"] }}</ion-col>
-        <ion-col>{{ history["detail"] }}</ion-col>
-      </ion-row>
-    </ion-grid>
+      <ion-item counter="true">
+        <ion-label position="stacked">Alasan perubahan</ion-label>
+        <ion-textarea
+          placeholder="Type something here"
+          [autoGrow]="true"
+          placeholder="Masukkan alasan"
+          maxlength="500"
+          [(ngModel)]="reason"
+        ></ion-textarea>
+      </ion-item>
+
+      <ion-button id="confirmation-alert">Simpan</ion-button>
+    </div>
+    <div class="card ion-padding">
+      <div style="text-align: center">
+        <h1>Daftar Transaksi</h1>
+      </div>
+
+      <div class="transaction-list-items" *ngFor="let history of historys">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <p class="list-item-time">{{ history["tanggal_transaksi"] }}</p>
+              <p class="list-item-alasan">{{ history["detail"] }}</p>
+            </ion-col>
+            <ion-col style="display: flex" class="list-item-detail">
+              <div>
+                <p>
+                  <img src="../assets/img/koin10.png" />
+                </p>
+                <p [ngStyle]="{
+                    color: history['jumlah_transaksi'] < 0 ? 'red' : 'green'}">
+                  {{ history["jumlah_transaksi"] }}
+                </p>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
   </ion-content>
 </ion-app>
 
 <h1 *ngIf="user_status == 'peserta'">Hayo ngapain 🤭</h1>
+
+<ion-alert
+  trigger="confirmation-alert"
+  header="Apakah anda ingin menyimpan jumlah koin?"
+  [buttons]="alertButtons"
+></ion-alert>
