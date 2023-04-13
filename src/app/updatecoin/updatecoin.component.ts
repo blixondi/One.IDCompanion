@@ -46,10 +46,12 @@ export class UpdatecoinComponent implements OnInit {
 
 
   insertHistory() {
+    this.diff_koin = this.koin_new - this.koin_old;
     this.ps.insertHistory(this.id, this.diff_koin, this.reason).subscribe((data) => {
       if (data['result'] == "success") {
         this.reason = "";
         this.diff_perolehan = 0;
+        this.diff_koin = 0;
         this.updateCoin();
       }
     })
@@ -58,8 +60,8 @@ export class UpdatecoinComponent implements OnInit {
   }
 
   updateCoin() {
-    this.diff_perolehan = this.perolehan_koin_new - this.perolehan_koin_old;
-    if(this.diff_perolehan < 0){
+    this.diff_perolehan = this.koin_new - this.koin_old;
+    if (this.diff_perolehan < 0) {
       this.diff_perolehan = 0;
     }
     this.ps.updateCoin(this.diff_perolehan, this.koin_new, this.id).subscribe((data) => {
