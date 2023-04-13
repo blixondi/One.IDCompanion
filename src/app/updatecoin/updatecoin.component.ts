@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 import { PesertaService } from '../peserta.service';
 import { ActivatedRoute } from '@angular/router';
@@ -19,8 +19,13 @@ export class UpdatecoinComponent implements OnInit {
   id = 0;
   nama_kelompok = '';
 
+
   koin_old = 0;
   koin_new = 0;
+
+  koin1 = 0;
+  koin5 = 0;
+  koin10 = 0;
 
   perolehan_koin_old = 0;
   perolehan_koin_new = 0;
@@ -59,8 +64,19 @@ export class UpdatecoinComponent implements OnInit {
 
   }
 
+  async calculateCoin() {
+    this.koin10 = Math.floor(this.koin_old / 10)
+    let remaining = this.koin_old % 10
+
+    this.koin5 = Math.floor(remaining / 5)
+    remaining = remaining % 5
+
+    this.koin1 = remaining
+  }
+
   updateCoin() {
     this.diff_perolehan = this.koin_new - this.koin_old;
+
     if (this.diff_perolehan < 0) {
       this.diff_perolehan = 0;
     }
@@ -69,6 +85,7 @@ export class UpdatecoinComponent implements OnInit {
         this.getDataKelompokById(this.id);
         this.getHistoryById(this.id);
         this.updateToast();
+        this.calculateCoin()
       }
     })
 
@@ -81,7 +98,9 @@ export class UpdatecoinComponent implements OnInit {
       this.koin_new = data['data']['0']['koin'];
       this.perolehan_koin_old = data['data']['0']['perolehan_koin'];
       this.perolehan_koin_new = data['data']['0']['perolehan_koin'];
+      this.calculateCoin()
     });
+    // this.calculateCoin()
   }
 
   getHistoryById(id: number) {
@@ -115,7 +134,6 @@ export class UpdatecoinComponent implements OnInit {
     });
 
     await toast.present();
-
   }
 
   async ngOnInit() {
@@ -124,6 +142,9 @@ export class UpdatecoinComponent implements OnInit {
     this.user_status = await this.storage.get('user_status');
     this.getDataKelompokById(kelompok_id);
     this.getHistoryById(kelompok_id);
+    // this.calculateCoin()
+    console.log(this.koin_old)
   }
+
 
 }

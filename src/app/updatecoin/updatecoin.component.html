@@ -1,38 +1,45 @@
 <ion-app *ngIf="user_status == 'admin'">
   <ion-content class="">
     <div class="card-header ion-padding">
-      <p class="card-subtitle">Detail Poin Kelompok</p>
-      <h1 class="card-title">{{ nama_kelompok }}</h1>
+      <p class="card-subtitle">Detail Poin: {{nama_kelompok}}</p>
+      <h1 class="card-title">{{ koin_old }} Talenta</h1>
 
-      <p>
+      <!-- <p>
         Total Koin: <span style="font-weight: 750">{{ koin_old }}</span>
-      </p>
+      </p> -->
       <p>
         Total Perolehan Koin:
         <span style="font-weight: 750">{{ perolehan_koin_old }}</span>
       </p>
       <ion-grid [fixed]="true">
         <ion-row class="">
-          <!-- <ion-col size="" class="">
+          <ion-col size="" class="">
             <ion-card class="center-content point-card space-betweend">
               <img src="../assets/img/koin1.png" style="width: 30%" />
-              <h3>{{ koin1_old }}</h3>
+              <h3>{{ koin10 }}</h3>
             </ion-card>
           </ion-col>
 
           <ion-col size="" class="">
             <ion-card class="center-content point-card space-betweend">
               <img src="../assets/img/koin5.png" style="width: 30%" />
-              <h3>{{ koin5_old }}</h3>
-            </ion-card>
-          </ion-col> -->
-
-          <ion-col size="" class="">
-            <ion-card class="">
-              <img src="../assets/img/koin10.png" style="width: 30%" />
-              <h3>{{ koin_old }}</h3>
+              <h3>{{ koin5 }}</h3>
             </ion-card>
           </ion-col>
+
+          <ion-col size="" class="">
+            <ion-card class="center-content point-card space-betweend">
+              <img src="../assets/img/koin10.png" style="width: 30%" />
+              <h3>{{ koin1 }}</h3>
+            </ion-card>
+          </ion-col>
+
+          <!-- <ion-col size="" class="">
+            <ion-card class="">
+              <img src="../assets/img/koin10.png" style="width: 30%" />
+              <h3>{{ koin1 }}</h3>
+            </ion-card>
+          </ion-col> -->
         </ion-row>
 
       </ion-grid>
@@ -90,10 +97,7 @@
               <p class="list-item-alasan">{{ history["detail"] }}</p>
             </ion-col>
             <ion-col style="display: flex" class="list-item-detail">
-              <div>
-                <p>
-                  <img src="../assets/img/koin10.png" />
-                </p>
+              <div >
                 <p [ngStyle]="{
                     color: history['jumlah_transaksi'] < 0 ? 'red' : 'green'}">
                   {{ history["jumlah_transaksi"] }}

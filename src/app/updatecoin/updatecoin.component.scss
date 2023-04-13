@@ -23,7 +23,8 @@
   position: relative;
   display: block;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(251, 220, 153, 0.291) 100%);
+  // background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(251, 220, 153, 0.291) 100%);
+  background: rgba(251, 220, 153, 0.291);
   border-radius: 0 0 20px 20px;
   padding-top: 20px;
   padding-bottom: 40px;
@@ -41,11 +42,12 @@
   color: rgb(58, 0, 25);
   margin-top: 5px;
   font-weight: 500;
+  margin-bottom: -8px;
 }
 .card-subtitle {
   font-size: 15px;
   padding: 0;
-  margin-bottom: 0;
+  margin-bottom: 1px;
   color: rgb(58, 0, 25);
 }
 
@@ -70,6 +72,7 @@
 }
 
 .list-item-detail {
+  // padding: 10px;
   font-size: 14px;
   color: dimgrey;
   display: flex;
@@ -81,10 +84,14 @@
 
 .list-item-detail p {
   margin: 0;
-  font-size: 14px;
+  font-size: 18px;
+  font-weight: 500;
 }
 .list-item-detail div {
-  width: 25px;
+  // width: 25px;
+  // padding: 7px 15px;
+  // background-color: aliceblue;
+  border-radius: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
