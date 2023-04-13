@@ -1,13 +1,10 @@
 <ion-app>
-
   <ion-content class="ion-padding">
-
-    <ion-row style="margin-top: 10px; align-items: start;">
-      <ion-text color="black" style="align-items: start;">
+    <ion-row style="margin-top: 10px; align-items: start">
+      <ion-text color="black" style="align-items: start">
         <h1 style="">Home</h1>
       </ion-text>
     </ion-row>
-
 
     <ion-row>
       <ion-col class="col-header">Nama Kelompok</ion-col>
@@ -17,10 +14,13 @@
 
     <ion-row class="table-row" *ngFor="let kelompok of kelompoks">
       <ion-col>{{ kelompok.nama }}</ion-col>
-      <ion-col style="text-align: right;">{{ kelompok.total_koin }}</ion-col>
-      <ion-col style="text-align: center;" routerLink="/updateCoin/{{ kelompok.id }}">Ubah</ion-col>
+      <ion-col style="text-align: right">{{ kelompok.koin }}</ion-col>
+      <ion-col style="text-align: right">{{ kelompok.perolehan_koin }}</ion-col>
+      <ion-col
+        style="text-align: center"
+        routerLink="/updateCoin/{{ kelompok.id }}"
+        >Ubah</ion-col
+      >
     </ion-row>
-
   </ion-content>
-
 </ion-app>

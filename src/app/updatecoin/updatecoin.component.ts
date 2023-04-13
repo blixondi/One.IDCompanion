@@ -69,7 +69,7 @@ export class UpdatecoinComponent implements OnInit {
     this.diff_koin1 = this.koin1_new - this.koin1_old;
     this.diff_koin5 = this.koin5_new - this.koin5_old;
     this.diff_koin10 = this.koin10_new - this.koin10_old;
-    this.ps.insertHistory(this.id, this.diff_koin1, this.diff_koin5, this.diff_koin10, this.reason).subscribe((data) => {
+    this.ps.insertHistory(this.id, this.diff_koin1, this.reason).subscribe((data) => {
       if (data['result'] == "success") {
         this.reason = "";
         this.updateCoin();
@@ -80,7 +80,7 @@ export class UpdatecoinComponent implements OnInit {
   }
 
   updateCoin() {
-    this.ps.updateCoin(this.koin1_new, this.koin5_new, this.koin10_new, this.id).subscribe((data) => {
+    this.ps.updateCoin(this.koin1_new, this.koin10_new, this.id).subscribe((data) => {
       if (data['result'] == "success") {
         this.getDataKelompokById(this.id);
         this.getHistoryById(this.id);
