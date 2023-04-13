@@ -16,62 +16,40 @@ export class UpdatecoinComponent implements OnInit {
   constructor(private storage: Storage, public ps: PesertaService, public route: ActivatedRoute, public tc: ToastController) { }
 
   user_status = '';
-  nama_kelompok = '';
-  koin1_old = 0;
-  koin5_old = 0;
-  koin10_old = 0;
-  total_koin_old = 0;
   id = 0;
+  nama_kelompok = '';
 
-  koin1_new = 0;
-  koin5_new = 0;
-  koin10_new = 0;
+  koin_old = 0;
+  koin_new = 0;
+
+  perolehan_koin_old = 0;
+  perolehan_koin_new = 0;
+
+  diff_koin = 0;
+  diff_perolehan = 0;
+
   reason = "";
-
-  diff_koin1 = 0;
-  diff_koin5 = 0;
-  diff_koin10 = 0;
 
   historys = [];
 
-  addKoin1() {
-    //this.koin1_new = this.koin1_old
-    this.koin1_new += 1;
-    this.diff_koin1 = this.koin1_new - this.koin1_old;
+  addKoin() {
+    this.koin_new += 1;
+    this.perolehan_koin_new += 1;
+    this.diff_koin = this.koin_new - this.koin_old;
   }
 
-  remKoin1() {
-    this.koin1_new -= 1;
-    this.diff_koin1 = this.koin1_new - this.koin1_old;
+  remKoin() {
+    this.koin_new -= 1;
+    this.perolehan_koin_new -= 1;
+    this.diff_koin = this.koin_new - this.koin_old;
   }
 
-  addKoin5() {
-    this.koin5_new += 1;
-    this.diff_koin5 = this.koin5_new - this.koin5_old;
-  }
-
-  remKoin5() {
-    this.koin5_new -= 1;
-    this.diff_koin5 = this.koin5_new - this.koin5_old;
-  }
-
-  addKoin10() {
-    this.koin10_new += 1;
-    this.diff_koin10 = this.koin10_new - this.koin10_old;
-  }
-
-  remKoin10() {
-    this.koin10_new -= 1;
-    this.diff_koin10 = this.koin10_new - this.koin10_old;
-  }
 
   insertHistory() {
-    this.diff_koin1 = this.koin1_new - this.koin1_old;
-    this.diff_koin5 = this.koin5_new - this.koin5_old;
-    this.diff_koin10 = this.koin10_new - this.koin10_old;
-    this.ps.insertHistory(this.id, this.diff_koin1, this.reason).subscribe((data) => {
+    this.ps.insertHistory(this.id, this.diff_koin, this.reason).subscribe((data) => {
       if (data['result'] == "success") {
         this.reason = "";
+        this.diff_perolehan = 0;
         this.updateCoin();
       }
     })
@@ -80,7 +58,11 @@ export class UpdatecoinComponent implements OnInit {
   }
 
   updateCoin() {
-    this.ps.updateCoin(this.koin1_new, this.koin10_new, this.id).subscribe((data) => {
+    this.diff_perolehan = this.perolehan_koin_new - this.perolehan_koin_old;
+    if(this.diff_perolehan < 0){
+      this.diff_perolehan = 0;
+    }
+    this.ps.updateCoin(this.diff_perolehan, this.koin_new, this.id).subscribe((data) => {
       if (data['result'] == "success") {
         this.getDataKelompokById(this.id);
         this.getHistoryById(this.id);
@@ -93,13 +75,10 @@ export class UpdatecoinComponent implements OnInit {
   getDataKelompokById(id: number) {
     this.ps.getDataKelompokById(id).subscribe((data) => {
       this.nama_kelompok = data['data']['0']['nama'];
-      this.koin1_old = data['data']['0']['koin1'];
-      this.koin5_old = data['data']['0']['koin5'];
-      this.koin10_old = data['data']['0']['koin10'];
-      this.koin1_new = data['data']['0']['koin1'];
-      this.koin5_new = data['data']['0']['koin5'];
-      this.koin10_new = data['data']['0']['koin10'];
-      this.total_koin_old = data['data']['0']['total_koin'];
+      this.koin_old = data['data']['0']['koin'];
+      this.koin_new = data['data']['0']['koin'];
+      this.perolehan_koin_old = data['data']['0']['perolehan_koin'];
+      this.perolehan_koin_new = data['data']['0']['perolehan_koin'];
     });
   }
 

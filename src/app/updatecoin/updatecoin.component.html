@@ -5,11 +5,15 @@
       <h1 class="card-title">{{ nama_kelompok }}</h1>
 
       <p>
-        Total Koin: <span style="font-weight: 750">{{ total_koin_old }}</span>
+        Total Koin: <span style="font-weight: 750">{{ koin_old }}</span>
+      </p>
+      <p>
+        Total Perolehan Koin:
+        <span style="font-weight: 750">{{ perolehan_koin_old }}</span>
       </p>
       <ion-grid [fixed]="true">
         <ion-row class="">
-          <ion-col size="" class="">
+          <!-- <ion-col size="" class="">
             <ion-card class="center-content point-card space-betweend">
               <img src="../assets/img/koin1.png" style="width: 30%" />
               <h3>{{ koin1_old }}</h3>
@@ -21,19 +25,16 @@
               <img src="../assets/img/koin5.png" style="width: 30%" />
               <h3>{{ koin5_old }}</h3>
             </ion-card>
-          </ion-col>
+          </ion-col> -->
 
           <ion-col size="" class="">
-            <ion-card class="center-content point-card space-betweend">
+            <ion-card class="">
               <img src="../assets/img/koin10.png" style="width: 30%" />
-              <h3>{{ koin10_old }}</h3>
+              <h3>{{ koin_old }}</h3>
             </ion-card>
           </ion-col>
         </ion-row>
 
-        <!-- <div style="margin-top:10px">
-        Total Poin:
-      </div> -->
       </ion-grid>
     </div>
 
@@ -44,63 +45,24 @@
 
       <ion-item>
         <ion-label position="stacked"
-          >Koin 1
+          >Koin
           <span
             style="font-weight: 750"
-            [ngStyle]="{ color: diff_koin1 < 0 ? 'red' : 'green' }"
-            >{{ diff_koin1 ? "(" + diff_koin1 + ")" : "" }}
+            [ngStyle]="{ color: diff_koin < 0 ? 'red' : 'green' }"
+            >{{ diff_koin ? "(" + diff_koin + ")" : "" }}
           </span>
         </ion-label>
         <ion-input
           type="number"
-          value="{{ koin1_old }}"
-          [(ngModel)]="koin1_new"
+          value="{{ koin_old }}"
+          [(ngModel)]="koin_new"
         ></ion-input>
         <div slot="end">
-          <ion-button (click)="addKoin1()">+</ion-button>
-          <ion-button color="danger" (click)="remKoin1()">-</ion-button>
+          <ion-button (click)="addKoin()">+</ion-button>
+          <ion-button color="danger" (click)="remKoin()">-</ion-button>
         </div>
       </ion-item>
 
-      <ion-item>
-        <ion-label position="stacked"
-          >Koin 5
-          <span
-            style="font-weight: 750"
-            [ngStyle]="{ color: diff_koin5 < 0 ? 'red' : 'green' }"
-            >{{ diff_koin5 ? "(" + diff_koin5 + ")" : "" }}
-          </span>
-        </ion-label>
-        <ion-input
-          type="number"
-          value="{{ koin5_old }}"
-          [(ngModel)]="koin5_new"
-        ></ion-input>
-        <div slot="end">
-          <ion-button (click)="addKoin5()">+</ion-button>
-          <ion-button color="danger" (click)="remKoin5()">-</ion-button>
-        </div>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked"
-          >Koin 10
-          <span
-            style="font-weight: 750"
-            [ngStyle]="{ color: diff_koin10 < 0 ? 'red' : 'green' }"
-            >{{ diff_koin10 ? "(" + diff_koin10 + ")" : "" }}
-          </span>
-        </ion-label>
-        <ion-input
-          type="number"
-          value="{{ koin10_old }}"
-          [(ngModel)]="koin10_new"
-        ></ion-input>
-        <div slot="end">
-          <ion-button (click)="addKoin10()">+</ion-button>
-          <ion-button color="danger" (click)="remKoin10()">-</ion-button>
-        </div>
-      </ion-item>
 
       <ion-item counter="true">
         <ion-label position="stacked">Alasan perubahan</ion-label>
@@ -113,10 +75,7 @@
         ></ion-textarea>
       </ion-item>
 
-      
-      <ion-button id="confirmation-alert"
-        >Simpan</ion-button
-      >
+      <ion-button id="confirmation-alert">Simpan</ion-button>
     </div>
     <div class="card ion-padding">
       <div style="text-align: center">
@@ -133,38 +92,11 @@
             <ion-col style="display: flex" class="list-item-detail">
               <div>
                 <p>
-                  <img src="../assets/img/koin1.png" />
-                </p>
-                <p
-                  [ngStyle]="{
-                    color: history['transaksi_1'] < 0 ? 'red' : 'green'
-                  }"
-                >
-                  {{ history["transaksi_1"] }}
-                </p>
-              </div>
-              <div>
-                <p>
-                  <img src="../assets/img/koin5.png" />
-                </p>
-                <p
-                  [ngStyle]="{
-                    color: history['transaksi_5'] < 0 ? 'red' : 'green'
-                  }"
-                >
-                  {{ history["transaksi_5"] }}
-                </p>
-              </div>
-              <div>
-                <p>
                   <img src="../assets/img/koin10.png" />
                 </p>
-                <p
-                  [ngStyle]="{
-                    color: history['transaksi_10'] < 0 ? 'red' : 'green'
-                  }"
-                >
-                  {{ history["transaksi_10"] }}
+                <p [ngStyle]="{
+                    color: history['jumlah_transaksi'] < 0 ? 'red' : 'green'}">
+                  {{ history["jumlah_transaksi"] }}
                 </p>
               </div>
             </ion-col>

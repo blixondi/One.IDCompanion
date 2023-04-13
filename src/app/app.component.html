@@ -5,34 +5,34 @@
     </ion-toolbar>
   </ion-header>
   <ion-content>
-    <div style="height: 90%; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-      <img src="../assets/icon/logo.png" style="width: 50%; margin-bottom: 50px;" />
+    <div
+      style="
+        height: 90%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <img
+        src="../assets/icon/logo.png"
+        style="width: 50%; margin-bottom: 50px"
+      />
       <div class="">
         <ion-item>
-          <ion-label position="floating">
-            Username
-          </ion-label>
-          <ion-input
-            name="email"
-            type="email"
-            [(ngModel)]="login_user"
-          >
+          <ion-label position="floating"> Username </ion-label>
+          <ion-input name="email" type="email" [(ngModel)]="login_user">
           </ion-input>
         </ion-item>
-        <ion-item style="margin-top: 10px;">
-          <ion-label position="floating">
-            Password
-          </ion-label>
-          <ion-input
-            name="password"
-            type="password"
-            [(ngModel)]="login_pw"
-          >
+        <ion-item style="margin-top: 10px">
+          <ion-label position="floating"> Password </ion-label>
+          <ion-input name="password" type="password" [(ngModel)]="login_pw">
           </ion-input>
         </ion-item>
 
         <ion-button
-          style="margin-top: 50px;"
+          style="margin-top: 50px"
           type="submit"
           expand="block"
           (click)="login()"
@@ -40,7 +40,6 @@
         >
       </div>
     </div>
-    <h1>hi i modified something here</h1>
   </ion-content>
 </ion-app>
 
