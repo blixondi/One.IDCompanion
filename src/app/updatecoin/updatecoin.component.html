@@ -1,7 +1,7 @@
 <ion-app *ngIf="user_status == 'admin'">
   <ion-content class="">
     <div class="card-header ion-padding">
-      <p class="card-subtitle">Detail Poin: {{nama_kelompok}}</p>
+      <p class="card-subtitle">Detail Poin: {{ nama_kelompok }}</p>
       <h1 class="card-title">{{ koin_old }} Talenta</h1>
 
       <!-- <p>
@@ -16,7 +16,7 @@
           <ion-col size="" class="">
             <ion-card class="center-content point-card space-betweend">
               <img src="../assets/img/koin1.png" style="width: 30%" />
-              <h3>{{ koin10 }}</h3>
+              <h3>{{ koin1 }}</h3>
             </ion-card>
           </ion-col>
 
@@ -30,7 +30,7 @@
           <ion-col size="" class="">
             <ion-card class="center-content point-card space-betweend">
               <img src="../assets/img/koin10.png" style="width: 30%" />
-              <h3>{{ koin1 }}</h3>
+              <h3>{{ koin10 }}</h3>
             </ion-card>
           </ion-col>
 
@@ -41,7 +41,6 @@
             </ion-card>
           </ion-col> -->
         </ion-row>
-
       </ion-grid>
     </div>
 
@@ -70,7 +69,6 @@
         </div>
       </ion-item>
 
-
       <ion-item counter="true">
         <ion-label position="stacked">Alasan perubahan</ion-label>
         <ion-textarea
@@ -97,9 +95,12 @@
               <p class="list-item-alasan">{{ history["detail"] }}</p>
             </ion-col>
             <ion-col style="display: flex" class="list-item-detail">
-              <div >
-                <p [ngStyle]="{
-                    color: history['jumlah_transaksi'] < 0 ? 'red' : 'green'}">
+              <div>
+                <p
+                  [ngStyle]="{
+                    color: history['jumlah_transaksi'] < 0 ? 'red' : 'green'
+                  }"
+                >
                   {{ history["jumlah_transaksi"] }}
                 </p>
               </div>
