@@ -17,9 +17,9 @@ export class PesertaHomeComponent implements OnInit {
   koin = 0;
   perolehan_koin = 0;
 
-  koin1 = '';
-  koin5 = '';
-  koin10 = '';
+  koin1 = 0
+  koin5 = 0
+  koin10 = 0
   total_koin = 0;
 
   historys = [];
@@ -33,6 +33,7 @@ export class PesertaHomeComponent implements OnInit {
       this.koin = data['data']['0']['koin'];
       this.perolehan_koin = data['data']['0']['perolehan_koin'];
       this.kelompok_id = data['data']['0']['id'];
+      this.calculateCoin()
     });
   }
 
@@ -46,6 +47,16 @@ export class PesertaHomeComponent implements OnInit {
     this.id = await this.storage.get('user_id');
     this.getDataKelompok(this.id);
     this.getHistoryKelompok(this.id);
+  }
+
+  async calculateCoin() {
+    this.koin10 = Math.floor(this.koin / 10)
+    let remaining = this.koin % 10
+
+    this.koin5 = Math.floor(remaining / 5)
+    remaining = remaining % 5
+
+    this.koin1 = remaining
   }
 
 }
