@@ -63,11 +63,24 @@
           value="{{ koin_old }}"
           [(ngModel)]="koin_new"
         ></ion-input>
-        <div slot="end">
-          <ion-button (click)="addKoin()">+</ion-button>
-          <ion-button color="danger" (click)="remKoin()">-</ion-button>
-        </div>
       </ion-item>
+
+        <ion-grid>
+          <ion-row>
+            <ion-col size="auto">
+              <ion-button (click)="addKoin()">+1</ion-button>
+              <ion-button color="danger" (click)="remKoin()">-1</ion-button>
+            </ion-col>
+            <ion-col size="auto">
+              <ion-button (click)="addKoin5()">+5</ion-button>
+              <ion-button color="danger" (click)="remKoin5()">-5</ion-button>
+            </ion-col>
+            <ion-col size="auto">
+              <ion-button (click)="addKoin10()">+10</ion-button>
+              <ion-button color="danger" (click)="remKoin10()">-10</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
 
       <ion-item counter="true">
         <ion-label position="stacked">Alasan perubahan</ion-label>

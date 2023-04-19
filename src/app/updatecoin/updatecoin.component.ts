@@ -49,6 +49,29 @@ export class UpdatecoinComponent implements OnInit {
     this.diff_koin = this.koin_new - this.koin_old;
   }
 
+  addKoin5() {
+    this.koin_new += 5;
+    this.perolehan_koin_new += 5;
+    this.diff_koin = this.koin_new - this.koin_old;
+  }
+
+  remKoin5() {
+    this.koin_new -= 5;
+    this.perolehan_koin_new -= 5;
+    this.diff_koin = this.koin_new - this.koin_old;
+  }
+
+  addKoin10() {
+    this.koin_new += 10;
+    this.perolehan_koin_new += 10;
+    this.diff_koin = this.koin_new - this.koin_old;
+  }
+
+  remKoin10() {
+    this.koin_new -= 10;
+    this.perolehan_koin_new -= 10;
+    this.diff_koin = this.koin_new - this.koin_old;
+  }
 
   insertHistory() {
     this.diff_koin = this.koin_new - this.koin_old;
