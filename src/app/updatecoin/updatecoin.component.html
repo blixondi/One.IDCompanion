@@ -50,19 +50,18 @@
       </div>
 
       <ion-item>
-        <ion-label position="stacked"
-          >Koin
-          <span
-            style="font-weight: 750"
-            [ngStyle]="{ color: diff_koin < 0 ? 'red' : 'green' }"
-            >{{ diff_koin ? "(" + diff_koin + ")" : "" }}
-          </span>
-        </ion-label>
         <ion-input
+          label="Koin"
+          labelPlacement="floating"
           type="number"
           value="{{ koin_old }}"
           [(ngModel)]="koin_new"
         ></ion-input>
+        <span
+            style="font-weight: 750"
+            [ngStyle]="{ color: diff_koin < 0 ? 'red' : 'green' }"
+            >{{ diff_koin ? "(" + diff_koin + ")" : "" }}
+          </span>
       </ion-item>
 
         <ion-grid>
@@ -82,14 +81,16 @@
           </ion-row>
         </ion-grid>
 
-      <ion-item counter="true">
-        <ion-label position="stacked">Alasan perubahan</ion-label>
+      <ion-item>
         <ion-textarea
-          placeholder="Type something here"
           [autoGrow]="true"
           placeholder="Masukkan alasan"
-          maxlength="500"
           [(ngModel)]="reason"
+          label="Alasan perubahan"
+          labelPlacement="floating"
+          [counter]="true"
+          maxlength="500"
+          style="margin-bottom: 20px"
         ></ion-textarea>
       </ion-item>
 
@@ -123,12 +124,13 @@
       </div>
     </div>
   </ion-content>
-</ion-app>
-
-<h1 *ngIf="user_status == 'peserta'">Hayo ngapain 🤭</h1>
-
-<ion-alert
+  <ion-alert
   trigger="confirmation-alert"
   header="Apakah anda ingin menyimpan jumlah koin?"
   [buttons]="alertButtons"
 ></ion-alert>
+</ion-app>
+
+<h1 *ngIf="user_status == 'peserta'">Hayo ngapain 🤭</h1>
+
+
