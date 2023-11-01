@@ -6,3 +6,5 @@ Simple point input system for GKKAI TMS Koinonia Youth Camp 2023. Made with Ioni
 
 https://one-in-dominus.web.app
 
+Update 01/11/2023 - Site is not working anymore
+
